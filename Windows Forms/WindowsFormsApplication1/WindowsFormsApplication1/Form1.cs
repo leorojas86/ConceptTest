@@ -19,9 +19,10 @@ namespace WindowsFormsApplication1
             this.webBrowser1.Navigate(AppDomain.CurrentDomain.BaseDirectory + "WebApplication/index.html");
         }
 
+        //http://blog.ropardo.ro/2010/05/19/windows-application-interaction-with-a-web-page/
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-
+            var result = this.webBrowser1.Document.InvokeScript("showText", new object[1] { "Windows Application Call" });
         }
     }
 }
