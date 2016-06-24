@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
 
         private void TestSQLite()
         {
+            //http://sqlitebrowser.org/
             SQLiteConnection.CreateFile("MyDatabase.sqlite");
             SQLiteConnection connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
             connection.Open();
