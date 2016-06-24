@@ -15,6 +15,8 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+
+            this.webBrowser1.Navigate(AppDomain.CurrentDomain.BaseDirectory + "WebApplication/index.html");
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
