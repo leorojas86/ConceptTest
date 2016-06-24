@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
 
             string sql2 = "insert into highscores (name, score) values ('Me', 9001)";
             SQLiteCommand command2 = new SQLiteCommand(sql2, connection);
-            command.ExecuteNonQuery();
+            command2.ExecuteNonQuery();
         }
     }
 }
