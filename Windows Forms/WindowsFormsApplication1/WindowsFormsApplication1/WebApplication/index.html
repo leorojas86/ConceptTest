@@ -3,27 +3,22 @@
 <html>
 	<head>
 		<title>Page Title</title>
-        <script src="https://github.com/douglascrockford/JSON-js/blob/master/json2.js"> </script>
-        <script> 
+        <script src="Service.js" type="text/javascript"> </script>
+        <script type="text/javascript"> 
+
+            ServiceClient.instance.initialize();
         
             function login()
             {
-                var name            = document.getElementById("user_name_button").value;
-                var password        = document.getElementById("user_password_button").value;
-                var query           = "SELECT name, password FROM users WHERE name = '" + name +"' AND password = '" + password + "'";
-                var resultString    = window.external.SQLiteExecuteSelect(query);
-                var result          = JSON.parse(resultString);
+                var name      = document.getElementById("user_name_button").value;
+                var password  = document.getElementById("user_password_button").value;
+                var success   = ServiceClient.instance.login(name, password);
 
-                if(result.rows.length > 0)
-                    alert("Success");
+                if(success)
+                    alert("Login Success");
                 else 
-                    alert("Error");
+                    alert("Login Error, User or password is incorrect");
             }
-
-            window.external.SQLiteCreateFile("MyDatabase.sqlite");
-            window.external.SQLiteOpenConnection("Data Source=MyDatabase.sqlite;Version=3;");
-            window.external.SQLiteExecuteNonQuery("CREATE TABLE users (name VARCHAR(20), password VARCHAR(20))");
-            window.external.SQLiteExecuteNonQuery("INSERT INTO users (name, password) values ('Test', 123)");
 
         </script>
 	</head>
