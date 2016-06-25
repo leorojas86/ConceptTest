@@ -7,7 +7,13 @@ namespace WindowsFormsApplication1
     [ComVisible(true)]
     public class ObjectForScripting
     {
-        public void sendMessage(string text)
+        private SQLiteWrapper _sqliteWrapper = new SQLiteWrapper();
+
+        public ObjectForScripting()
+        {
+        }
+
+        /*public void sendMessage(string text)
         {
             MessageBox.Show(text);
             TestSQLite();
@@ -27,6 +33,26 @@ namespace WindowsFormsApplication1
             string sql2 = "insert into highscores (name, score) values ('Me', 9001)";
             SQLiteCommand command2 = new SQLiteCommand(sql2, connection);
             command2.ExecuteNonQuery();
+        }*/
+
+        public void SQLiteCreateFile(string fileName)
+        {
+            _sqliteWrapper.CreateFile(fileName);
+        }
+
+        public void SQLiteOpenConnection(string connectionSettings)
+        {
+            _sqliteWrapper.OpenConnection(connectionSettings);
+        }
+
+        public string SQLiteExecuteNonQuery(string query)
+        {
+            return _sqliteWrapper.ExecuteNonQuery(query);
+        }
+
+        public string SQLiteExecuteSelect(string query)
+        {
+            return _sqliteWrapper.ExecuteSelect(query);
         }
     }
 }

@@ -1,19 +1,37 @@
 <!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 <html>
 	<head>
 		<title>Page Title</title>
+        <script src="https://github.com/douglascrockford/JSON-js/blob/master/json2.js"> </script>
         <script> 
         
-            function showText(text)
+            function login()
             {
-                alert(text);
-                window.external.sendMessage('alert was shown');
+                var name            = document.getElementById("user_name_button").value;
+                var password        = document.getElementById("user_password_button").value;
+                var query           = "SELECT name, password FROM users WHERE name = '" + name +"' AND password = '" + password + "'";
+                var resultString    = window.external.SQLiteExecuteSelect(query);
+                var result          = JSON.parse(resultString);
+
+                if(result.rows.length > 0)
+                    alert("Success");
+                else 
+                    alert("Error");
             }
+
+            window.external.SQLiteCreateFile("MyDatabase.sqlite");
+            window.external.SQLiteOpenConnection("Data Source=MyDatabase.sqlite;Version=3;");
+            window.external.SQLiteExecuteNonQuery("CREATE TABLE users (name VARCHAR(20), password VARCHAR(20))");
+            window.external.SQLiteExecuteNonQuery("INSERT INTO users (name, password) values ('Test', 123)");
 
         </script>
 	</head>
 	<body>
-		<h1>My First Heading</h1>
-		<p>My first paragraph.</p>
+        <p class='margin_class'> User Name </p>
+        <input type='text' id='user_name_button' class='input_class margin_class' value=''> <br /><br />
+        <p class='margin_class'> Password </p>
+        <input type='text' id='user_password_button' class='input_class margin_class' value=''> <br /><br />
+        <button id='login_button' class='button_class margin_class' onclick="login();"> Login </button>
 	</body>
 </html>

@@ -16,15 +16,14 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
 
+            this.webBrowser1.ObjectForScripting = new ObjectForScripting();
             this.webBrowser1.Navigate(AppDomain.CurrentDomain.BaseDirectory + "WebApplication/index.html");
         }
 
         //http://blog.ropardo.ro/2010/05/19/windows-application-interaction-with-a-web-page/
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            ObjectForScripting ofs = new ObjectForScripting();
-            this.webBrowser1.ObjectForScripting = ofs;
-            var result = this.webBrowser1.Document.InvokeScript("showText", new object[1] { "Windows Application Call" });
+            //var result = this.webBrowser1.Document.InvokeScript("showText", new object[1] { "Windows Application Call" });
         }
     }
 }
