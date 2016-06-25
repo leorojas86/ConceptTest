@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<html>
+	<head>
+		<title>Page Title</title>
+        <script src="Service.js" type="text/javascript"> </script>
+        <script type="text/javascript"> 
+
+            ServiceClient.instance.initialize();
+        
+            function login()
+            {
+                var name      = document.getElementById("user_name_button").value;
+                var password  = document.getElementById("user_password_button").value;
+                var success   = ServiceClient.instance.login(name, password);
+
+                if(success)
+                    alert("Login Success");
+                else 
+                    alert("Login Error, User or password is incorrect");
+            }
+
+        </script>
+	</head>
+	<body>
+        <p class='margin_class'> User Name </p>
+        <input type='text' id='user_name_button' class='input_class margin_class' value=''> <br /><br />
+        <p class='margin_class'> Password </p>
+        <input type='text' id='user_password_button' class='input_class margin_class' value=''> <br /><br />
+        <button id='login_button' class='button_class margin_class' onclick="login();"> Login </button>
+	</body>
+</html>
