@@ -16,8 +16,6 @@ ServiceClientClass.prototype.initialize = function()
     window.external.SQLiteOpenConnection("Data Source=MyDatabase.sqlite;Version=3;");
     window.external.SQLiteExecuteNonQuery("CREATE TABLE users (name VARCHAR(20), password VARCHAR(20))");
     window.external.SQLiteExecuteNonQuery("INSERT INTO users (name, password) values ('Test', 123)");
-
-    alert("Initialization completed");
 };
 
 ServiceClientClass.prototype.login = function(name, password)
@@ -26,7 +24,10 @@ ServiceClientClass.prototype.login = function(name, password)
     var resultString = window.external.SQLiteExecuteSelect(query);
     var result = JSON.parse(resultString);
 
-    alert("resultString = " + resultString);
+    //alert("resultString = " + resultString);
+
+    //var test = window.external.SQLiteExecuteNonQuery("INSERT INTO users (name, password) values ('Test', 123)");
+    //alert("test = " + test);
 
     return result.rows.length > 0;
 };

@@ -51,7 +51,7 @@ public class SQLiteWrapper
 
     public String ExecuteNonQuery(String query)
     {
-        Cursor cursor = _database.rawQuery(query, null);
+        /*Cursor cursor = _database.rawQuery(query, null);
         ArrayList<HashMap<String, String>> rows = new ArrayList<HashMap<String, String>>();
 
         while(cursor.moveToNext())
@@ -73,7 +73,25 @@ public class SQLiteWrapper
         result.put("rows", rows);
         JSONObject jsonObject = new JSONObject(result);
 
+        //_activity.ShowDialog("Result", jsonObject.toString());
+
+        return jsonObject.toString();*/
+
+        _database.execSQL(query);
+
+        long affectedRows               = GetAffectedRows();
+        HashMap<String, String> result  = new HashMap<String, String>();
+        result.put("affected_rows", Long.toString(affectedRows));
+        JSONObject jsonObject = new JSONObject(result);
         return jsonObject.toString();
+    }
+
+    private long GetAffectedRows()
+    {
+        SQLiteStatement statement = _database.compileStatement("SELECT changes()");
+        long affectedRows         = statement.simpleQueryForLong();
+
+        return affectedRows;
     }
 
     public String ExecuteSelect(String query)
