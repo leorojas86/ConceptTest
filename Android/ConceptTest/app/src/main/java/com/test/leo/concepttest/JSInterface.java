@@ -1,6 +1,5 @@
 package com.test.leo.concepttest;
 
-import 	android.app.*;
 import android.webkit.*;
 /**
  * Created by Leo on 6/25/2016.
@@ -8,12 +7,12 @@ import android.webkit.*;
 public class JSInterface
 {
     private MainActivity _activity = null;
-
-    private SQLiteWrapper _sqliteWrapper = new SQLiteWrapper();
+    private SQLiteWrapper _sqliteWrapper = null;
 
     public JSInterface(MainActivity activity)
     {
         _activity = activity;
+        _sqliteWrapper = new SQLiteWrapper(activity);
     }
 
     /*@JavascriptInterface
