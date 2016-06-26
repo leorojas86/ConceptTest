@@ -1,5 +1,6 @@
 package com.test.leo.concepttest;
 
+import android.content.pm.PackageManager;
 import android.database.sqlite.*;
 import android.database.*;
 
@@ -31,7 +32,13 @@ public class SQLiteWrapper
         {
             try
             {
-                _file.createNewFile();
+                String[] perms = {"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"};
+                int permsRequestCode = 200;
+                _activity.requestPermissions(perms, permsRequestCode);
+                boolean hasPermissions = _activity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == PackageManager.PERMISSION_GRANTED;
+
+                if(hasPermissions)
+                    _file.createNewFile();
             }
             catch(Exception e)
             {
