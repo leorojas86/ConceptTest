@@ -16,6 +16,8 @@ ServiceClientClass.prototype.initialize = function()
     window.external.SQLiteOpenConnection("Data Source=MyDatabase.sqlite;Version=3;");
     window.external.SQLiteExecuteNonQuery("CREATE TABLE users (name VARCHAR(20), password VARCHAR(20))");
     window.external.SQLiteExecuteNonQuery("INSERT INTO users (name, password) values ('Test', 123)");
+
+    alert("Initialization completed");
 };
 
 ServiceClientClass.prototype.login = function(name, password)

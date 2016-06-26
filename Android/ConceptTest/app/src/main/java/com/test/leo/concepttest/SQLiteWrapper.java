@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Created by Leo on 6/25/2016.
  */
-public class SQLiteWrapper
+public class SQLiteWrapper implements DatabaseErrorHandler
 {
     private SQLiteDatabase _database = null;
 
@@ -20,9 +20,14 @@ public class SQLiteWrapper
 
     }
 
+    public void onCorruption(SQLiteDatabase var1)
+    {
+        boolean isOpen = var1.isOpen();
+    }
+
     public void CreateFile(String fileName)
     {
-        _database = SQLiteDatabase.openOrCreateDatabase(fileName, null);
+        _database = SQLiteDatabase.openOrCreateDatabase(fileName, null, this);
     }
 
     public void OpenConnection(String connectionSettings)
