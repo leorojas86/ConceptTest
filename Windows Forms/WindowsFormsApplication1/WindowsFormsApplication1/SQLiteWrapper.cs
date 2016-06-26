@@ -37,9 +37,7 @@ namespace WindowsFormsApplication1
             SQLiteDataReader reader               = command.ExecuteReader(System.Data.CommandBehavior.Default);
             List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
 
-            reader.Read();
-
-            while (reader.HasRows)
+            while(reader.Read() && reader.HasRows)
             {
                 Dictionary<string, object> currentRow = new Dictionary<string, object>();
 
@@ -52,8 +50,6 @@ namespace WindowsFormsApplication1
                 }
 
                 rows.Add(currentRow);
-
-                reader.Read();
             }
 
             Dictionary<string, object> values   = new Dictionary<string, object>() { { "rows", rows } };
