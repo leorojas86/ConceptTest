@@ -10,9 +10,6 @@
         
             function login()
             {
-                //window.external.showDialog("test");
-
-                alert("test");
                 var name      = document.getElementById("user_name_button").value;
                 var password  = document.getElementById("user_password_button").value;
                 var success   = ServiceClient.instance.login(name, password);

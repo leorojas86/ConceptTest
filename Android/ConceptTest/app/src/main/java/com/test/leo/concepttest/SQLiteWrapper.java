@@ -100,6 +100,8 @@ public class SQLiteWrapper
         result.put("rows", rows);
         JSONObject jsonObject = new JSONObject(result);
 
+        //_activity.ShowDialog("Rows", Integer.toString(rows.size()));
+
         return jsonObject.toString();
     }
 }
