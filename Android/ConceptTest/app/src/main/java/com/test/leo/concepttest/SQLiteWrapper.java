@@ -96,11 +96,9 @@ public class SQLiteWrapper
             rows.add(currentRow);
         }
 
-        HashMap<String, ArrayList> result = new HashMap<String, ArrayList>();
-        result.put("rows", rows);
+        HashMap<String, JSONArray> result = new HashMap<String, JSONArray>();
+        result.put("rows", new JSONArray(rows));
         JSONObject jsonObject = new JSONObject(result);
-
-        //_activity.ShowDialog("Rows", Integer.toString(rows.size()));
 
         return jsonObject.toString();
     }

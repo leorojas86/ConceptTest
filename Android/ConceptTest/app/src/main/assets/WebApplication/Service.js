@@ -26,7 +26,7 @@ ServiceClientClass.prototype.login = function(name, password)
     var resultString = window.external.SQLiteExecuteSelect(query);
     var result = JSON.parse(resultString);
 
-    alert("result.rows.length = " + result.rows.length);
+    alert("resultString = " + resultString);
 
     return result.rows.length > 0;
 };
