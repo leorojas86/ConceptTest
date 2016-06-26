@@ -25,7 +25,7 @@ public class SQLiteWrapper
 
     public void CreateFile(String fileName)
     {
-        _file = new File("MyDatabase.sqlite");
+        _file = new File(android.os.Environment.getExternalStorageDirectory(), "/MyDatabase.sqlite");
 
         if(!_file.exists())
         {
@@ -45,6 +45,8 @@ public class SQLiteWrapper
     {
         if(_file.exists())
             _database = SQLiteDatabase.openOrCreateDatabase(_file, null);
+        //else
+            //_activity.ShowDialog("Error", "Database file does not exist");
     }
 
     public String ExecuteNonQuery(String query)
