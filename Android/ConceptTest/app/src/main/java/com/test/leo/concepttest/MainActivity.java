@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient());
-        webView.addJavascriptInterface(new JSInterface(this), "JSInterface");
+        webView.addJavascriptInterface(new JSInterface(this), "external");
         //webView.loadUrl("http://google.com");
         webView.loadUrl("file:///android_asset/WebApplication/index.html");
 
