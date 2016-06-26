@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
         {
             SQLiteCommand command               = new SQLiteCommand(query, _connection);
             int affectedRows                    = command.ExecuteNonQuery();
-            Dictionary<string, object> values   = new Dictionary<string, object>() { { "AffectedRows", affectedRows.ToString() } };
+            Dictionary<string, object> values   = new Dictionary<string, object>() { { "affected_rows", affectedRows.ToString() } };
             string json                         = Json.JsonParser.ToJson(values);
             return json;
         }
